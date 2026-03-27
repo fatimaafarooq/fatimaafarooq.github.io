@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatima Farooq — AI Researcher</title>
+    <meta name="description" content="Fatima Farooq — PhD student at UT Arlington. Research in scalable GNNs, knowledge graphs, relational transformers. Co-first author of gHAWK (OGB leaderboard #1 for 3 benchmarks).">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #fafaf8;
+            --bg-alt: #f0efeb;
+            --text: #1a1a1a;
+            --text-muted: #555;
+            --text-light: #777;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --accent-bg: #eff6ff;
+            --border: #e0ddd5;
+            --highlight: #fef3c7;
+            --serif: 'Source Serif 4', Georgia, serif;
+            --sans: 'Source Sans 3', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+            --max-w: 820px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        /* ---- NAV ---- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(250, 250, 248, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 52px;
+        }
+
+        nav .nav-name {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        nav .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 24px;
+            transition: color 0.2s;
+        }
+
+        nav .nav-links a:hover { color: var(--accent); }
+
+        .hamburger { display: none; background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text); }
+
+        /* ---- MAIN ---- */
+        main {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 48px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child { border-bottom: none; }
+
+        /* ---- HERO ---- */
+        .hero {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 40px;
+            align-items: start;
+            padding-top: 56px;
+        }
+
+        .hero-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+        }
+
+        .hero-photo-placeholder {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: var(--bg-alt);
+            border: 3px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--text-light);
+            font-family: var(--serif);
+            font-weight: 300;
+        }
+
+        .hero-text h1 {
+            font-family: var(--serif);
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .hero-text .subtitle {
+            font-size: 17px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .hero-text .interests {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .hero-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s;
+        }
+
+        .hero-links a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+        .hero-bio {
+            font-size: 15px;
+            line-height: 1.75;
+            color: var(--text);
+        }
+
+        .hero-bio strong { font-weight: 600; }
+
+        /* ---- SECTION HEADINGS ---- */
+        h2 {
+            font-family: var(--serif);
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        /* ---- NEWS / HIGHLIGHTS ---- */
+        .news-list {
+            list-style: none;
+        }
+
+        .news-list li {
+            padding: 8px 0;
+            font-size: 15px;
+            display: flex;
+            gap: 12px;
+            border-bottom: 1px solid var(--bg-alt);
+        }
+
+        .news-list li:last-child { border-bottom: none; }
+
+        .news-date {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--text-light);
+            white-space: nowrap;
+            min-width: 90px;
+        }
+
+        .news-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            background: var(--highlight);
+            color: #92400e;
+            margin-right: 6px;
+        }
+
+        /* ---- PUBLICATIONS ---- */
+        .pub-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--bg-alt);
+        }
+
+        .pub-item:last-child { border-bottom: none; }
+
+        .pub-title {
+            font-family: var(--serif);
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .pub-authors {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .pub-authors .me { font-weight: 600; color: var(--text); }
+
+        .pub-venue {
+            font-size: 14px;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .pub-links a {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent);
+            text-decoration: none;
+            margin-right: 14px;
+            transition: color 0.2s;
+        }
+
+        .pub-links a:hover { text-decoration: underline; }
+
+        .pub-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 10px;
+            border-radius: 3px;
+            background: #dcfce7;
+            color: #166534;
+            margin-bottom: 8px;
+        }
+
+        /* ---- EXPERIENCE ---- */
+        .exp-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--bg-alt);
+        }
+
+        .exp-item:last-child { border-bottom: none; }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .exp-role { font-weight: 600; font-size: 16px; }
+        .exp-date { font-size: 14px; color: var(--text-light); font-family: var(--mono); font-size: 13px; }
+        .exp-org { font-size: 15px; color: var(--text-muted); margin-bottom: 8px; }
+
+        .exp-bullets {
+            list-style: disc;
+            padding-left: 20px;
+            font-size: 14.5px;
+            color: var(--text);
+        }
+
+        .exp-bullets li { margin-bottom: 4px; }
+
+        /* ---- EDUCATION ---- */
+        .edu-item {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--bg-alt);
+        }
+
+        .edu-item:last-child { border-bottom: none; }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .edu-degree { font-weight: 600; }
+        .edu-date { font-size: 14px; color: var(--text-light); font-family: var(--mono); font-size: 13px; }
+        .edu-school { font-size: 15px; color: var(--text-muted); }
+        .edu-detail { font-size: 14px; color: var(--text); margin-top: 4px; }
+
+        /* ---- SKILLS ---- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .skill-group h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-light);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            font-size: 13px;
+            padding: 3px 10px;
+            background: var(--bg-alt);
+            border-radius: 4px;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        /* ---- AWARDS ---- */
+        .awards-list {
+            list-style: none;
+        }
+
+        .awards-list li {
+            padding: 8px 0;
+            font-size: 15px;
+            border-bottom: 1px solid var(--bg-alt);
+            display: flex;
+            gap: 10px;
+        }
+
+        .awards-list li:last-child { border-bottom: none; }
+
+        .award-year {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--text-light);
+            min-width: 50px;
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            text-align: center;
+            padding: 32px 24px;
+            font-size: 13px;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 700px) {
+            .hero { grid-template-columns: 1fr; text-align: center; justify-items: center; gap: 20px; }
+            .hero-links { justify-content: center; }
+            .skills-grid { grid-template-columns: 1fr; }
+            nav .nav-links { display: none; }
+            .hamburger { display: block; }
+            nav .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 52px; left: 0; right: 0;
+                background: var(--bg);
+                border-bottom: 1px solid var(--border);
+                padding: 16px 24px;
+            }
+            nav .nav-links.active a { margin: 8px 0; margin-left: 0; }
+            .exp-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-name">Fatima Farooq</a>
+        <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#news">News</a>
+            <a href="#publications">Publications</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#awards">Awards</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+
+<!-- HERO / ABOUT -->
+<section id="about" class="hero">
+    <!-- Replace with your photo: <img src="image.png" alt="Fatima Farooq" class="hero-photo"> -->
+    <div class="hero-photo-placeholder">FF</div>
+    <div class="hero-text">
+        <h1>Fatima Farooq</h1>
+        <div class="subtitle">PhD Student &amp; Graduate Research Assistant</div>
+        <div class="interests">Graph Representation Learning · Scalable GNNs · Knowledge Graphs · Relational Transformers</div>
+        <div class="hero-links">
+            <a href="mailto:fxf3214@mavs.uta.edu"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank"><i class="fas fa-graduation-cap"></i> Scholar</a>
+            <a href="https://github.com/fatimaafarooq" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/fatima-farooq-5bab71159/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="Fatima_Farooq_CV.pdf" target="_blank"><i class="fas fa-file-pdf"></i> CV</a>
+        </div>
+        <div class="hero-bio">
+            I am a Graduate Research Assistant in the <strong>LIDS Lab</strong> at the <strong>University of Texas at Arlington</strong>, advised by <a href="#" style="color:var(--accent)">Prof. Ashraf Aboulnaga</a>. My research focuses on making <strong>graph neural networks scale</strong> to web-scale knowledge graphs with hundreds of millions of nodes.
+            <br><br>
+            I co-developed <strong>gHAWK</strong>, a GNN training framework that <strong>topped the OGB leaderboard for 3 knowledge graph benchmarks</strong>. I'm currently exploring <strong>relational transformers</strong> and <strong>LLMs for structured reasoning</strong> over relational data.
+            <br><br>
+            Before UTA, I spent 2.5 years as a Senior AI Developer at <strong>NASTP</strong> (Pakistan), building real-time anomaly detection and decision support systems for air defense (800–1,000 tracks/sec). I bring 7+ years of experience across GNNs, NLP, computer vision, geospatial analytics, and systems engineering.
+        </div>
+    </div>
+</section>
+
+<!-- NEWS -->
+<section id="news">
+    <h2>News</h2>
+    <ul class="news-list">
+        <li>
+            <span class="news-date">Dec 2025</span>
+            <span><span class="news-tag">Paper</span> <strong>gHAWK</strong> preprint released on arXiv — topped OGB leaderboard for 3 knowledge graph benchmarks. <a href="https://arxiv.org/abs/2512.08274" style="color:var(--accent)">[arXiv]</a></span>
+        </li>
+        <li>
+            <span class="news-date">Aug 2024</span>
+            <span>Started PhD in Computer Science at <strong>UT Arlington</strong>, joining the LIDS Lab as a fully funded GRA.</span>
+        </li>
+        <li>
+            <span class="news-date">Aug 2022</span>
+            <span>Graduated MS Data Science from FAST-NUCES with <strong>Silver Medal</strong> (2nd in cohort, CGPA 3.74/4.0).</span>
+        </li>
+        <li>
+            <span class="news-date">Jan 2022</span>
+            <span>Joined <strong>CENTAIC, NASTP</strong> as Senior AI Developer — leading real-time radar AI systems.</span>
+        </li>
+        <li>
+            <span class="news-date">Oct 2018</span>
+            <span><span class="news-tag">Award</span> Won <strong>GRAND PRIX AWARD</strong> at CPWC, Forum8, Tokyo, Japan.</span>
+        </li>
+    </ul>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+    <h2>Publications</h2>
+
+    <div class="pub-item">
+        <div class="pub-badge">OGB Leaderboard #1 × 3</div>
+        <div class="pub-title">gHAWK: Local and Global Structure Encoding for Scalable Training of Graph Neural Networks on Knowledge Graphs</div>
+        <div class="pub-authors">Humera Sabir*, <span class="me">Fatima Farooq*</span>, Ashraf Aboulnaga &nbsp; <em>(* equal contribution)</em></div>
+        <div class="pub-venue">arXiv:2512.08274, December 2025</div>
+        <div class="pub-links">
+            <a href="https://arxiv.org/abs/2512.08274"><i class="fas fa-file-pdf"></i> Paper</a>
+            <a href="https://arxiv.org/pdf/2512.08274"><i class="fas fa-file-alt"></i> PDF</a>
+            <a href="https://www.researchgate.net/publication/398512514"><i class="fab fa-researchgate"></i> ResearchGate</a>
+        </div>
+    </div>
+
+    <div class="pub-item">
+        <div class="pub-title">Transformer-based Automatic Speech Recognition for Low Resource Languages</div>
+        <div class="pub-authors"><span class="me">Fatima Farooq</span></div>
+        <div class="pub-venue">MS Thesis, FAST – NUCES, 2022 &nbsp;·&nbsp; wav2vec 2.0 fine-tuning, 16% WER / 8% CER on Urdu</div>
+    </div>
+
+    <div class="pub-item">
+        <div class="pub-title">Autonomous Driving Simulator using OpenCV and Deep Learning</div>
+        <div class="pub-authors"><span class="me">Fatima Farooq</span></div>
+        <div class="pub-venue">BS Thesis, UET Taxila, 2019 &nbsp;·&nbsp; 1st Prize at Open House 2019 &nbsp;·&nbsp; GRAND PRIX AWARD, CPWC Tokyo 2018</div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+    <h2>Experience</h2>
+
+    <div class="exp-item">
+        <div class="exp-header">
+            <span class="exp-role">Graduate Research Assistant</span>
+            <span class="exp-date">Aug 2024 – Present</span>
+        </div>
+        <div class="exp-org">LIDS Laboratory, University of Texas at Arlington</div>
+        <ul class="exp-bullets">
+            <li>Scalable GNN training on knowledge graphs with 244M+ nodes (MAG240M, WikiKG90M, OGB-WikiKG2).</li>
+            <li>Co-developed <strong>gHAWK</strong> — Bloom-filter + TransE structural precomputation. Topped OGB leaderboard ×3.</li>
+            <li>Extending Relational Transformer (Ranjan et al., ICLR 2026 Oral) for zero-shot KG reasoning.</li>
+        </ul>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-header">
+            <span class="exp-role">Senior AI Developer</span>
+            <span class="exp-date">Jan 2022 – Jul 2024</span>
+        </div>
+        <div class="exp-org">CENTAIC, NASTP, Pakistan</div>
+        <ul class="exp-bullets">
+            <li>Led real-time aircraft trajectory classification on radar time-series (800–1,000 tracks/sec).</li>
+            <li>Built anomaly detection on continuous radar streams; PyQGIS geospatial visualization.</li>
+            <li>Memgraph graph DB for noisy geospatial data; Multiple Hypothesis Tracking framework.</li>
+            <li>Qt cross-platform UIs; IPC architecture with stress/performance testing.</li>
+        </ul>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-header">
+            <span class="exp-role">Graduate Student Researcher</span>
+            <span class="exp-date">Sep 2021 – Aug 2022</span>
+        </div>
+        <div class="exp-org">AIM Lab, FAST – NUCES, Islamabad</div>
+        <ul class="exp-bullets">
+            <li>Transformer-based ASR for Urdu — fine-tuned wav2vec 2.0, 16% WER, 8% CER.</li>
+            <li>Built audio datasets for low-resource language speech recognition.</li>
+        </ul>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-header">
+            <span class="exp-role">Lab Instructor</span>
+            <span class="exp-date">Jan 2019 – Jan 2022</span>
+        </div>
+        <div class="exp-org">FAST – NUCES, Islamabad</div>
+        <ul class="exp-bullets">
+            <li>Taught Data Analysis, Visualization, Databases, OOP, Digital Logic Design (3 years).</li>
+        </ul>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-header">
+            <span class="exp-role">Software Engineer — Deep Learning</span>
+            <span class="exp-date">Apr 2018 – Jul 2019</span>
+        </div>
+        <div class="exp-org">VR & Motion Simulation Lab, UET Taxila</div>
+        <ul class="exp-bullets">
+            <li>Autonomous driving simulator (OpenCV, MobileNet-SSD). Won 1st Prize + GRAND PRIX AWARD (Tokyo 2018).</li>
+        </ul>
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+    <h2>Education</h2>
+
+    <div class="edu-item">
+        <div class="edu-header">
+            <span class="edu-degree">PhD, Computer Science</span>
+            <span class="edu-date">Aug 2024 – Present</span>
+        </div>
+        <div class="edu-school">University of Texas at Arlington, USA</div>
+        <div class="edu-detail">Fully funded GRA · Advisor: Prof. Ashraf Aboulnaga · LIDS Lab</div>
+    </div>
+
+    <div class="edu-item">
+        <div class="edu-header">
+            <span class="edu-degree">MS, Data Science — Silver Medalist (3.74/4.0)</span>
+            <span class="edu-date">Sep 2020 – Aug 2022</span>
+        </div>
+        <div class="edu-school">FAST – NUCES, Pakistan</div>
+        <div class="edu-detail">Thesis: Transformer-based ASR for Low Resource Languages (Urdu) · 16% WER / 8% CER</div>
+    </div>
+
+    <div class="edu-item">
+        <div class="edu-header">
+            <span class="edu-degree">BS, Software Engineering (3.48/4.0)</span>
+            <span class="edu-date">Oct 2015 – Aug 2019</span>
+        </div>
+        <div class="edu-school">University of Engineering & Technology, Taxila, Pakistan</div>
+        <div class="edu-detail">Thesis: Autonomous Driving Simulator · 1st Prize at Open House 2019</div>
+    </div>
+</section>
+
+<!-- SELECTED PROJECTS -->
+<section id="projects">
+    <h2>Selected Projects</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14.5px;">
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>Decision Support Tools for Air Defense</strong><br>ML framework · 800–1,000 tracks/sec real-time</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>ASR for Urdu (Low-Resource)</strong><br>wav2vec 2.0 · 16% WER · 8% CER</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>Autonomous Driving Simulator</strong><br>OpenCV + DL · GRAND PRIX AWARD Tokyo 2018</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>COVID-19 Spread Dashboard</strong><br>D3.js interactive visualization · global data</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>Darknet2020 Network Analysis</strong><br>Big data cybersecurity threat detection</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>Recommendation System (25M)</strong><br>Collaborative filtering + content-based</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>B+-Tree Query Executor (C++)</strong><br>Indexing, buffer pool, WAL, joins from scratch</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>Few-Shot Event Detection</strong><br>Black-box meta-learning · low-resource</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>Heart Disease Prediction</strong><br>4 ML models · clinical prediction</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>DBLP Bibliometric Prediction</strong><br>t-SNE visualization · 93% accuracy</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>Loan Eligibility Automation</strong><br>ML pipeline · financial services</div>
+        <div style="padding: 12px; background: var(--bg-alt); border-radius: 6px;"><strong>200+ Freelance AI/ML Projects</strong><br>5+ years · DL, CV, NLP, visualization</div>
+    </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+    <h2>Awards & Honors</h2>
+    <ul class="awards-list">
+        <li><span class="award-year">2025</span> Fully Funded Graduate Research Assistantship, UT Arlington</li>
+        <li><span class="award-year">2022</span> Silver Medal — MS Data Science, FAST-NUCES (2nd in cohort)</li>
+        <li><span class="award-year">2019</span> First Prize — Final Year Project, UET Taxila Open House & Job Fair</li>
+        <li><span class="award-year">2018</span> GRAND PRIX AWARD (Winner) — CPWC, Forum8, Tokyo, Japan</li>
+        <li><span class="award-year">2018</span> HEC Government Merit-Based Scholarship (2017–2018)</li>
+        <li><span class="award-year">2018</span> Microsoft Student Partner — UET Taxila</li>
+        <li><span class="award-year">2014</span> 3rd in Province — International Kangaroo Mathematics Contest (IKMC)</li>
+    </ul>
+</section>
+
+</main>
+
+<footer>
+    &copy; 2025 Fatima Farooq · Built with care · Hosted on <a href="https://pages.github.com" style="color:var(--accent)">GitHub Pages</a>
+</footer>
+
+</body>
+</html>
